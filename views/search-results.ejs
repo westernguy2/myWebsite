@@ -6,5 +6,11 @@
   </head>
   <body>
     <p> welcome <%= topic%> </p>
+
+    <ul>
+    <% Array.from(lin).forEach(function(name) { %>
+        <li><%= name %> </li>
+    <% }); %>
+</ul>
   </body>
 </html>
