@@ -33,9 +33,11 @@ con.connect(function(err) {
   	
   });
 
-let checkWorksheets = function (req, res) {
+let checkWorksheets = function (req, res, next) {
   	let inp = req.body.topic;
 	app.locals.topic = inp;
+	console.log('hello');
+	console.log(inp);
 	let sql = "SELECT name FROM worksheets WHERE "+inp+"= 'Yes'";
   	con.query(sql, function (err, result) {
   		if (err) throw err;
@@ -48,15 +50,17 @@ let checkWorksheets = function (req, res) {
   		console.log(worksheetList);
   		//app.locals.lin = worksheetList;
   		res.render('search-results.ejs', {lin: worksheetList});
+  	console.log('what');
+  	return 'hi';
   	})
 }
 
 
 app.use(checkWorksheets);
-app.post('/views/search-results', function(req, res) {
+app.post('/views/search-results', function(req, res, next) {
   		console.log('hi');
-  		checkWorksheets(req, res);
-  		//console.log('hello');
+  		checkWorksheets(req, res, next);
+  		console.log('hello2');
   		
   	})
  

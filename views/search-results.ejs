@@ -1,5 +1,6 @@
 <html>
   <head>
+  	<style>
   	<link href="/css/styles.css" rel="stylesheet" type="text/css">
   	<title><%= topic %></title>
 </style>
@@ -9,7 +10,11 @@
 
     <ul>
     <% Array.from(lin).forEach(function(name) { %>
-        <li><%= name %> </li>
+
+    	<a href="/worksheets/<%= name%>.docx"  download>
+		<button><%= name %></button>
+		</a>
+      
     <% }); %>
 </ul>
   </body>
